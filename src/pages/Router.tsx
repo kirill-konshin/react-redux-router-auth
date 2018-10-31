@@ -2,11 +2,12 @@ import React from "react";
 import {Provider} from "react-redux";
 import {BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
 
-import {allowFoo, authenticatedWrapper, disAllowFoo, notAuthenticatedWrapper} from "./components/auth";
-import ProtectedRoute from "./components/protectedRoute";
-import App from "./pages/App";
-import Login from "./pages/Login";
-import Allowed from "./pages/Allowed";
+import {allowFoo, authenticatedWrapper, disAllowFoo, notAuthenticatedWrapper} from "../lib/auth";
+
+import ProtectedRoute from "../components/ProtectedRoute";
+import App from "./App";
+import Login from "./Login";
+import Allowed from "./Allowed";
 
 const AppRoute = () => (
     <App>

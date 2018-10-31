@@ -8,7 +8,7 @@ import {error} from "./helpers";
 import {HTTP} from "./actions";
 import errorMiddleware from "./errorMiddleware";
 
-export default initialState => {
+export default (initialState = undefined) => {
     let store;
 
     // this is some library that makes requests
@@ -36,5 +36,12 @@ export default initialState => {
             promiseMiddleware()
         )
     );
+
+    if (module['hot']) {
+        module['hot'].accept('./reducer', () => {
+            store.replaceReducer(require('./reducer').default);
+        });
+    }
+
     return store;
 };

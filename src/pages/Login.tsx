@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {loginAndLoadUser} from "../components/actions";
+import {loginAndLoadUser} from "../lib/actions";
 
 const Login = ({loginAndLoadUser}) => (
     <div>

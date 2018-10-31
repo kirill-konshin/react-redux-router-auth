@@ -1,9 +1,21 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {Route} from "react-router-dom";
-import {getToken} from "./reducer";
+import {Route, RouteProps} from "react-router-dom";
+import {getToken} from "../lib/reducer";
 
-class ProtectedRoute extends Component {
+export interface ProtectedRouteProps extends RouteProps {
+    acl?: any;
+}
+
+export interface ProtectedRouteState {
+    loading: boolean;
+    error?: Error;
+}
+
+@connect(state => ({
+    token: getToken(state)
+}))
+class ProtectedRoute extends Component<ProtectedRouteProps, ProtectedRouteState> {
     state = {loading: true, error: null};
 
     verifyAccess = async props => {
@@ -26,20 +38,19 @@ class ProtectedRoute extends Component {
         const {loading, error} = this.state;
         if (loading) return <div>Resolving permissions</div>;
         if (error) return <div>Access denied: {error.message}</div>;
-        return this.props.children;
+        const {children} = this.props;
+        return children;
     }
 }
 
-ProtectedRoute = connect(state => ({
-    token: getToken(state)
-}))(ProtectedRoute);
-
-const RouteWrapper = ({acl, children, component: Cmp, ...props}) => (
+const RouteWrapper: React.SFC<ProtectedRouteProps> = ({acl, children, component, render, ...props}) => (
     <Route
         {...props}
         render={() => (
             <ProtectedRoute acl={acl}>
-                {Cmp ? <Cmp>{children}</Cmp> : children}
+                <Route {...props} component={component} render={render}>
+                    {children}
+                </Route>
             </ProtectedRoute>
         )}
     />

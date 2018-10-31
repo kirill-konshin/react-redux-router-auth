@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@types/fetch-mock": "6.0.4",
+    "@types/react": "16.4.18",
+    "@types/react-router-dom": "4.3.1",
+    "@types/redux": "3.6.0",
+    "@types/redux-auth-wrapper": "2.0.8",
     "fetch-mock": "7.2.2",
     "is-promise": "2.1.0",
     "react": "16.6.0",
@@ -16,13 +20,12 @@
     "redux-thunk": "2.3.0"
   },
   "devDependencies": {
-    "react-scripts": "2.1.0"
+    "@types/react-dom": "16.0.9",
+    "parcel-bundler": "1.10.3",
+    "typescript": "3.1.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "parcel src/index.html"
   },
   "eslintConfig": {
     "extends": "react-app"
