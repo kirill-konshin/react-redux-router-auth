@@ -1,20 +1,25 @@
 {
   "extends": [
+    "typescript",
     "airbnb",
     "prettier",
     "prettier/react",
     "prettier/standard"
   ],
-  "parser": "typescript-eslint-parser",
   "plugins": [
     "prettier",
-    "babel",
     "react"
   ],
   "rules": {
-    "camelcase": "off", // redirect_uri in linking
     "global-require": "off",
     "indent": "off",
+    "import/extensions": [
+      ".js",
+      ".jsx",
+      ".json",
+      ".ts",
+      ".tsx"
+    ],
     "import/no-extraneous-dependencies": 0,
     "import/no-named-as-default": 0,
     "import/prefer-default-export": 0,
@@ -31,28 +36,38 @@
     "no-nested-ternary": 0,
     "no-param-reassign": 0,
     "no-plusplus": 0,
-    "no-restricted-globals": 0, // confirm
     "no-return-assign": 0,
-    "no-shadow": 0,
+    "no-shadow": 0, // Redux actions
     "no-unused-vars": 0,
+    "no-undef": 0, //FIXME @see https://github.com/eslint/typescript-eslint-parser/issues/75
     "react/forbid-prop-types": 0,
     "react/jsx-filename-extension": 0,
     "react/no-array-index-key": 0,
-    "react/no-did-mount-set-state": 0,
-    "react/no-did-update-set-state": 0,
     "react/no-multi-comp": 0,
     "react/no-unescaped-entities": 0,
     "react/no-unused-prop-types": 0,
-    "react/no-unused-state": 0, // getDerivedStateFromProps
+    "react/no-unused-state": 0,
+    // getDerivedStateFromProps
     "react/prop-types": 0,
     "react/require-default-props": 0,
     "spaced-comment": 0,
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "typescript/explicit-function-return-type": 0,
+    "typescript/explicit-member-accessibility": 0
   },
   "env": {
-    "jest": true,
-    "browser": true,
-    "jasmine": true,
-    "mocha": true
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
   }
 }
