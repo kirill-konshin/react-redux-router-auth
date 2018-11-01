@@ -9,3 +9,7 @@ Covered topics:
     - Forms
 2. Router
     - ACL
+3. Lint
+    - Pre-commit hook
+    - Prettier
+    - ESLint
