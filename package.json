@@ -2,6 +2,12 @@
   "name": "react-redux-router-auth",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "parcel src/index.html",
+    "lint": "DEBUG=eslint:cli-engine eslint --cache --cache-location ./node_modules/.cache/eslint --fix ./*/src/**",
+    "lint-changed": "lint-changed",
+    "precommit": "npm run lint-changed"
+  },
   "dependencies": {
     "@material-ui/core": "3.3.2",
     "@types/fetch-mock": "6.0.4",
@@ -29,21 +35,16 @@
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "2.9.0",
-    "eslint-plugin-babel": "5.1.0",
     "eslint-plugin-import": "2.11.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.7.0",
     "eslint-plugin-typescript": "0.13.0",
+    "husky": "1.1.2",
+    "lint-changed": "0.0.0-development",
     "parcel-bundler": "1.10.3",
     "typescript": "3.1.5",
     "typescript-eslint-parser": "20.1.1"
-  },
-  "scripts": {
-    "start": "parcel src/index.html"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

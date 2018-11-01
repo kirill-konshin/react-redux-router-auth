@@ -1,0 +1,6 @@
+{
+  "*.js": [
+    "eslint --cache --cache-location ./node_modules/.cache/eslint --fix",
+    "git add"
+  ]
+}
