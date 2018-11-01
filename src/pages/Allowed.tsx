@@ -1,3 +1,3 @@
-import React from "react";
+import React from 'react';
 
-export default () => (<div>Allowed</div>);
+export default () => <div>Allowed</div>;

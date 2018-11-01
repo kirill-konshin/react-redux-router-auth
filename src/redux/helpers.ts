@@ -1,4 +1,4 @@
-import {PENDING, FULFILLED, REJECTED} from "redux-promise-middleware";
+import {PENDING, FULFILLED, REJECTED} from 'redux-promise-middleware';
 
 export const DELIMETER = '_'; // PROMISE_TYPE_DELIMITER not exported from middleware
 

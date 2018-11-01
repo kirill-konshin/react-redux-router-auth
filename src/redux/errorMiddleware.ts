@@ -1,6 +1,6 @@
 import isPromise from 'is-promise';
 import {HTTP} from './actions';
-import {error} from "./helpers";
+import {error} from './helpers';
 
 const types = [error(HTTP)];
 

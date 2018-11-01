@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createStore from "./lib/store";
+import createStore from './redux/store';
 import Router from './pages/Router';
 
-const store = createStore();
+const {store, persistor} = createStore();
 
-ReactDOM.render(<Router store={store} />, document.getElementById('root'));
+ReactDOM.render(<Router store={store} persistor={persistor} />, document.getElementById('root'));
 
 if (module['hot']) {
     module['hot'].accept();

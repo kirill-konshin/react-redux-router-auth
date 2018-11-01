@@ -1,11 +1,13 @@
-import React from "react";
-import {connect} from "react-redux";
-import {loginAndLoadUser} from "../lib/actions";
+import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
-const Login = ({loginAndLoadUser}) => (
-    <div>
-        <button onClick={e => loginAndLoadUser('foo', 'bar')}>Login</button>
-    </div>
+import LoginForm from '../forms/Login';
+
+export default () => (
+    <Card style={{margin: '0 auto', maxWidth: '400px'}} raised>
+        <CardContent>
+            <LoginForm />
+        </CardContent>
+    </Card>
 );
-
-export default connect(null, {loginAndLoadUser})(Login);

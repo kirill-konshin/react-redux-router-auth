@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {Route, RouteProps} from "react-router-dom";
-import {getToken} from "../lib/reducer";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Route, RouteProps} from 'react-router-dom';
+import {getUser} from '../redux/reducer';
 
 export interface ProtectedRouteProps extends RouteProps {
     acl?: any;
@@ -13,7 +13,7 @@ export interface ProtectedRouteState {
 }
 
 @connect(state => ({
-    token: getToken(state)
+    user: getUser(state)
 }))
 class ProtectedRoute extends Component<ProtectedRouteProps, ProtectedRouteState> {
     state = {loading: true, error: null};
@@ -21,8 +21,8 @@ class ProtectedRoute extends Component<ProtectedRouteProps, ProtectedRouteState>
     verifyAccess = async props => {
         this.setState({loading: true});
         try {
-            const {token, acl} = props;
-            await acl(token);
+            const {user, acl} = props;
+            await acl(user);
         } catch (error) {
             this.setState({error});
         } finally {
