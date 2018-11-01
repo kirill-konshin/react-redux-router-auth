@@ -23,5 +23,5 @@ export const login = (username, password) => (dispatch, getState, api) =>
 
 export const loginAndLoadUser = (username, password) => async (dispatch, getState, api) => {
     await dispatch(login(username, password));
-    return await dispatch(loadUser('~'));
+    return dispatch(loadUser('~'));
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import {compose} from 'recompose';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -32,7 +33,7 @@ interface LoginProps {
     error?;
 }
 
-let Login: React.SFC<LoginProps> = ({handleSubmit, submitting, error}) => (
+const Login: React.SFC<LoginProps> = ({handleSubmit, submitting, error}) => (
     <form onSubmit={handleSubmit(onSubmit)}>
         <Field
             name="email"
@@ -60,10 +61,10 @@ let Login: React.SFC<LoginProps> = ({handleSubmit, submitting, error}) => (
     </form>
 );
 
-Login = reduxForm({form: 'login', validate})(Login);
-Login = connect(
-    null,
-    {loginAndLoadUser}
+export default compose(
+    reduxForm({form: 'login', validate}),
+    connect(
+        null,
+        {loginAndLoadUser}
+    )
 )(Login);
-
-export default Login;

@@ -4,6 +4,7 @@ import {persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
+import {createLogger} from 'redux-logger';
 import reducer from './reducer';
 import errorMiddleware from './errorMiddleware';
 import ApiStoreLink from './apiStoreLink';
@@ -26,15 +27,20 @@ export default (initialState = undefined) => {
             applyMiddleware(
                 thunkMiddleware.withExtraArgument(link.api),
                 errorMiddleware, // must be before promiseMiddleware
-                promiseMiddleware()
+                promiseMiddleware(),
+                createLogger({
+                    level: process.env.NODE_ENV !== 'production' ? 'log' : 'error',
+                    collapsed: (getState, action, logEntry) => !logEntry.error,
+                    diff: true
+                })
             )
         )
     );
 
     link.setStore(store);
 
-    if (module['hot']) {
-        module['hot'].accept('./reducer', () => {
+    if (module.hot) {
+        module.hot.accept('./reducer', () => {
             store.replaceReducer(require('./reducer').default);
         });
     }

@@ -18,6 +18,10 @@ export interface ProtectedRouteState {
 class ProtectedRoute extends Component<ProtectedRouteProps, ProtectedRouteState> {
     state = {loading: true, error: null};
 
+    async componentDidMount() {
+        await this.verifyAccess(this.props);
+    }
+
     verifyAccess = async props => {
         this.setState({loading: true});
         try {
@@ -29,10 +33,6 @@ class ProtectedRoute extends Component<ProtectedRouteProps, ProtectedRouteState>
             this.setState({loading: false});
         }
     };
-
-    async componentDidMount() {
-        await this.verifyAccess(this.props);
-    }
 
     render() {
         const {loading, error} = this.state;

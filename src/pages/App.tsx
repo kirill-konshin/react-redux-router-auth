@@ -12,11 +12,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {getUser} from '../redux/reducer';
 import {logout, loadUser} from '../redux/actions';
-import {instanceOf} from 'prop-types';
 
-const LinkTab = props => {
-    return <Tab component={Link} {...props} />;
-};
+const LinkTab = props => <Tab component={Link} {...props} />;
 
 const App = ({logout, loadUser, user, children, match: {url}, location: {pathname}}) =>
     !user ? (
@@ -35,7 +32,7 @@ const App = ({logout, loadUser, user, children, match: {url}, location: {pathnam
             </AppBar>
 
             <Card style={{maxWidth: '500px', margin: '90px auto 0 auto'}} raised>
-                <Tabs fullWidth value={pathname.replace(url + '/', '')} onChange={this.handleChange}>
+                <Tabs fullWidth value={pathname.replace(`${url}/`, '')} onChange={this.handleChange}>
                     <LinkTab to="/app/allowed" value="allowed" label="Allowed" />
                     <LinkTab to="/app/not-allowed" value="not-allowed" label="Not Allowed" />
                 </Tabs>
@@ -47,7 +44,10 @@ const App = ({logout, loadUser, user, children, match: {url}, location: {pathnam
                             try {
                                 console.log(await loadUser('123'));
                             } catch (e) {
-                                console.error('Action failed, caught locally:', e instanceof Response ? e.statusText : e.message);
+                                console.error(
+                                    'Action failed, caught locally:',
+                                    e instanceof Response ? e.statusText : e.message
+                                );
                             }
                         }}
                     >
