@@ -4,17 +4,19 @@ import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 
 import {allowFoo, disAllowFoo} from '../lib/acl';
-import {authenticatedWrapper, notAuthenticatedWrapper} from '../components/Auth';
-import ProtectedRoute from '../components/ProtectedRoute';
+import {authenticatedWrapper, notAuthenticatedWrapper} from '../auth/Auth';
+import ProtectedRoute from '../auth/ProtectedRoute';
 
 import App from './App';
 import Login from './Login';
 import Allowed from './Allowed';
+import Mobx from './Mobx';
 
 const AppRoute = props => (
     <App {...props}>
         <ProtectedRoute path="/app/allowed" acl={allowFoo} component={Allowed} />
         <ProtectedRoute path="/app/not-allowed" acl={disAllowFoo} component={Allowed} />
+        <Route path="/app/mobx" component={Mobx} />
     </App>
 );
 

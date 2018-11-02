@@ -35,6 +35,7 @@ const App = ({logout, loadUser, user, children, match: {url}, location: {pathnam
                 <Tabs fullWidth value={pathname.replace(`${url}/`, '')} onChange={this.handleChange}>
                     <LinkTab to="/app/allowed" value="allowed" label="Allowed" />
                     <LinkTab to="/app/not-allowed" value="not-allowed" label="Not Allowed" />
+                    <LinkTab to="/app/mobx" value="mobx" label="MobX" />
                 </Tabs>
                 <CardContent>{children}</CardContent>
                 <CardActions>

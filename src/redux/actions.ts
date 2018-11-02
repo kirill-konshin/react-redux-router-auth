@@ -2,6 +2,7 @@ export const HTTP = 'HTTP';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const LOAD_USER = 'LOAD_USER';
+export const GENERIC = 'GENERIC';
 
 export const loadUser = id => (dispatch, getState, api) =>
     dispatch({
@@ -25,3 +26,5 @@ export const loginAndLoadUser = (username, password) => async (dispatch, getStat
     await dispatch(login(username, password));
     return dispatch(loadUser('~'));
 };
+
+export const generic = (...args) => async (dispatch, getState, api) => dispatch({type: GENERIC, payload: api(...args)});

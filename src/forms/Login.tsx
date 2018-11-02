@@ -62,9 +62,9 @@ const Login: React.SFC<LoginProps> = ({handleSubmit, submitting, error}) => (
 );
 
 export default compose(
-    reduxForm({form: 'login', validate}),
     connect(
         null,
         {loginAndLoadUser}
-    )
+    ),
+    reduxForm({form: 'login', validate})
 )(Login);

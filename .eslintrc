@@ -53,7 +53,8 @@
     "spaced-comment": 0,
     "prettier/prettier": "error",
     "typescript/explicit-function-return-type": 0,
-    "typescript/explicit-member-accessibility": 0
+    "typescript/explicit-member-accessibility": 0,
+    "typescript/member-ordering": 0
   },
   "env": {
     "browser": true
